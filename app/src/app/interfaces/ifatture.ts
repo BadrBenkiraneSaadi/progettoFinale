@@ -1,6 +1,5 @@
 export interface IFatture {
-    content:[
-        {
+    
             id?: number,
             data: string,
             numero: number,
@@ -48,7 +47,7 @@ export interface IFatture {
                         id?: number,
                         nome: string,
                         provincia: {
-                            id?: string,
+                            id?: number,
                             nome: string,
                             sigla: string
                         }
@@ -58,6 +57,5 @@ export interface IFatture {
                 dataUltimoContatto: string,
                 fatturatoAnnuale: number
             }
-        }
-    ]
+   
 }

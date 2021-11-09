@@ -1,12 +1,5 @@
-import { IUtente } from './iutente';
-import { IStatofattura } from './istatofattura';
-import { IProvince } from './iprovince';
-import { IFatture } from './ifatture';
-import { IComuni } from './icomuni';
-import { IClienti } from './iclienti';
-
 export interface IApi {
-    content:IClienti|IComuni|IFatture|IProvince|IStatofattura|IUtente,
+    content:any,
     /*----------------------------------------------------------------*/
     pageable?: {},
     last?: boolean,

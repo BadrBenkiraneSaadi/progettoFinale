@@ -1,9 +1,5 @@
 export interface IProvince {
-    content:[
-        {
-            id: number,
-            nome: string,
-            sigla: string
-        }
-    ]
+    id?: number,
+    nome: string,
+    sigla: string
 }
