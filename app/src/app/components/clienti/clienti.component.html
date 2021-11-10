@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of clienti">
-                <th scope="row">{{item.id}} {{item.ragioneSociale}}</th>
+                <th scope="row">{{item.ragioneSociale}}</th>
                 <td>{{item.email}}</td>
                 <td>{{item.pec}}</td>
                 <td>{{item.telefono}}</td>
@@ -23,7 +23,7 @@
                 <td>
                     <button type="button" class="btn btn-primary btn-sm my-1"><i class="bi bi-eye"></i></button><br>
                     <button type="button" class="btn btn-warning btn-sm my-1"><i class="bi bi-vector-pen"></i></button><br>
-                    <button type="button" class="btn btn-danger btn-sm my-1" ng-click="delete(item.id)"><i class="bi bi-trash"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm my-1" (click)="delete(item.id)"><i class="bi bi-trash"></i></button>
                 </td>
             </tr>
         </tbody>

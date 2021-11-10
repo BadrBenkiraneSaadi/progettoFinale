@@ -39,4 +39,12 @@ export class FattureComponent implements OnInit {
       this.caricaFatture();
     }
   }
+
+  delete(id: number | undefined): void {
+    if (id) {
+      this.SFatture.deleteFattura(id.toString()).subscribe(res => {
+        this.caricaFatture();
+      });
+    }
+  }
 }

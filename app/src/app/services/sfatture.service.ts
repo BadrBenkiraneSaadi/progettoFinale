@@ -8,7 +8,7 @@ import { IFatture } from '../interfaces/ifatture';
   providedIn: 'root'
 })
 export class SFattureService {
-  private urlApiAll=environment.urlApi+'/api/fatture?&size=2000&sort=id,ASC';
+  private urlApiAll=environment.urlApi+'/api/fatture?&size=200000&sort=id,ASC';
   private urlApi=environment.urlApi+'/api/fatture/';
 
   constructor(private http:HttpClient) { }
