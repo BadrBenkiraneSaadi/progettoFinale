@@ -22,7 +22,7 @@ export class SProvinceService {
   }
 
   postProvincia(item:IProvince){
-    return this.http.post(this.urlApi, item);
+    return this.http.post<IProvince>(this.urlApi, item);
   }
 
   putProvincia(id:string,item:IProvince){

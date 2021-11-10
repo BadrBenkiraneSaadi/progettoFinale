@@ -59,8 +59,8 @@ export class DettaglioClienteComponent implements OnInit {
     fatturatoAnnuale: 0
   };
 
+  fatture:IFatture[]=[];
   fatturePagate:IFatture[]=[];
-
   fattureDaPagare:IFatture[]=[];
 
   constructor(private SClienti:SClientiService, private SFatture:SFattureService, private route:ActivatedRoute) { 
@@ -70,16 +70,13 @@ export class DettaglioClienteComponent implements OnInit {
         console.log(x);
         this.SClienti.getClientiById(x).subscribe(response => {
           this.cliente = response;
-        });
-        this.SFatture.getFatturaByStato('1').subscribe(response => {
-          let x:IFatture[] =response.content
-          x=x.filter(fatture=>fatture.cliente==this.cliente);
-          this.fatturePagate=x;
-        });
-        this.SFatture.getFatturaByStato('2').subscribe(response => {
-          let x:IFatture[] =response.content
-          x=x.filter(fatture=>fatture.cliente==this.cliente);
-          this.fattureDaPagare=x;
+          if(this.cliente.id){
+            this.SFatture.getFatturaByCliente(this.cliente.id.toString()).subscribe(res => {
+              this.fatture=res.content;
+              this.fattureDaPagare=this.fatture.filter(element=>element.stato.nome=='NON PAGATA');
+              this.fatturePagate=this.fatture.filter(element=>element.stato.nome=='PAGATA');              
+            })
+          }          
         });
       }
     });

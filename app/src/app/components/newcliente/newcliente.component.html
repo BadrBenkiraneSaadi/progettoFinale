@@ -121,16 +121,6 @@
             <input type="text" class="form-control" id="siglaSedeLegale" placeholder="Sigla Provincia Sede Legale..." name="siglaSedeLegale"
                 [(ngModel)]="nuovoCliente.indirizzoSedeLegale.comune.provincia.sigla">
         </div>
-        <div class="form-group">
-            <label for="dataUltimoContatto">Data UltimoContatto</label>
-            <input type="text" class="form-control" id="dataUltimoContatto" placeholder="Data Inserimento..." name="dataUltimoContatto"
-                [(ngModel)]="nuovoCliente.dataUltimoContatto">
-        </div>
-        <div class="form-group">
-            <label for="fatturatoAnnuale">Fatturato Annuale</label>
-            <input type="text" class="form-control" id="fatturatoAnnuale" placeholder="Fatturato Inserimento..." name="fatturatoAnnuale"
-                [(ngModel)]="nuovoCliente.fatturatoAnnuale">
-        </div>
 
         <button type="submit" class="btn btn-primary" (click)="creaCliente()">Submit</button>
     </form>

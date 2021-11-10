@@ -22,7 +22,7 @@ export class SFattureService {
   }
 
   getFatturaByCliente(id:string){
-    return this.http.get<IFatture>(this.urlApi+'cliente/'+id+'?&sort=id,ASC');
+    return this.http.get<IApi>(this.urlApi+'cliente/'+id+'?&sort=id,ASC');
   }
 
   getFatturaByStato(stato:string){

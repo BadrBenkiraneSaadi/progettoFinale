@@ -22,7 +22,7 @@ export class SComuniService {
   }
 
   postComune(item:IComuni){
-    return this.http.post(this.urlApi, item);
+    return this.http.post<IComuni>(this.urlApi, item);
   }
 
   putComune(id:string,item:IComuni){
