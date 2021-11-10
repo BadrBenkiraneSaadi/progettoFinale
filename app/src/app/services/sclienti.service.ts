@@ -8,7 +8,7 @@ import { IClienti } from '../interfaces/iclienti';
   providedIn: 'root'
 })
 export class SClientiService {
-  private urlApiAll=environment.urlApi+'/api/clienti?&sort=id,ASC';
+  private urlApiAll=environment.urlApi+'/api/clienti?page=0&size=2000&sort=id,ASC';
   private urlApi=environment.urlApi+'/api/clienti/';
 
   constructor(private http:HttpClient) { }
@@ -29,12 +29,12 @@ export class SClientiService {
     return this.http.get<IClienti>(this.urlApi+'dataultimocontatto?from='+from+'&to='+to);
   }
   
-  getClientiByRagioneSociale(data:string) {
-    return this.http.get<IClienti>(this.urlApi+'ragionesociale?nome='+data);
+  getClientiByRagioneSociale(ragioneSociale:string) {
+    return this.http.get<IClienti>(this.urlApi+'ragionesociale?nome='+ragioneSociale);
   }
 
-  getClientiByFatturatoAnnuale(id:string){
-    return this.http.get<IClienti>(this.urlApi+id);
+  getClientiByFatturatoAnnuale(from:string,to:string) {
+    return this.http.get<IClienti>(this.urlApi+'fatturatoannuale?from='+from+'&to='+to);
   }
 
   postClienti(item:IClienti){

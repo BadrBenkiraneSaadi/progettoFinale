@@ -8,12 +8,12 @@ import { IFatture } from '../interfaces/ifatture';
   providedIn: 'root'
 })
 export class SFattureService {
-  private urlApiAll=environment.urlApi+'/api/fatture?&sort=id,ASC';
+  private urlApiAll=environment.urlApi+'/api/fatture?&size=2000&sort=id,ASC';
   private urlApi=environment.urlApi+'/api/fatture/';
 
   constructor(private http:HttpClient) { }
 
-  getAllFattura() {
+  getAllFatture() {
     return this.http.get<IApi>(this.urlApiAll);
   }
 
@@ -25,12 +25,12 @@ export class SFattureService {
     return this.http.get<IFatture>(this.urlApi+'cliente/'+id+'?&sort=id,ASC');
   }
 
-  getFatturaByStato(id:string){
-    return this.http.get<IFatture>(this.urlApi+'stato/'+id+'?&sort=id,ASC');
+  getFatturaByStato(stato:string){
+    return this.http.get<IApi>(this.urlApi+'stato/'+stato+'?&sort=id,ASC');
   }
 
-  getFatturaByAnno(id:string){
-    return this.http.get<IFatture>(this.urlApi+'anno/'+id+'?&sort=id,ASC');
+  getFatturaByAnno(anno:string){
+    return this.http.get<IFatture>(this.urlApi+'anno/?anno='+anno+'?&sort=id,ASC');
   }
 
   getFatturaByDataBetween(from:string,to:string){

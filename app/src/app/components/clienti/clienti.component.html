@@ -1,0 +1,31 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Ragione Sociale</th>
+                <th scope="col">e-Mail</th>
+                <th scope="col">PEC</th>
+                <th scope="col">Telefeono</th>
+                <th scope="col">Sede Legale</th>
+                <th scope="col">Utilities</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of clienti">
+                <th scope="row">{{item.id}} {{item.ragioneSociale}}</th>
+                <td>{{item.email}}</td>
+                <td>{{item.pec}}</td>
+                <td>{{item.telefono}}</td>
+                <td>
+                    {{item.indirizzoSedeLegale.via}}<br>
+                    {{item.indirizzoSedeLegale.civico}}<br>
+                    {{item.indirizzoSedeLegale.comune.nome}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm my-1"><i class="bi bi-eye"></i></button><br>
+                    <button type="button" class="btn btn-warning btn-sm my-1"><i class="bi bi-vector-pen"></i></button><br>
+                    <button type="button" class="btn btn-danger btn-sm my-1" ng-click="delete(item.id)"><i class="bi bi-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Numero</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Importo</th>
+                <th scope="col">Anno</th>
+                <th scope="col">
+                    <select class="form-select" aria-label="Stato" [(ngModel)]="filtro" (click)="filtra()">
+                        <option selected>Stato</option>
+                        <option value="PAGATA">Fatture pagate</option>
+                        <option value="NON PAGATA">Fatture non pagate</option>
+                    </select>
+                </th>
+                <th scope="col">Utilities</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of fatture ">
+                <th scope="row">{{item.numero}}</th>
+                <td>{{item.cliente.ragioneSociale}}</td>
+                <td>{{item.importo | currency:'€ '}}</td>
+                <td>{{item.anno}}</td>
+                <td><b>{{item.stato.nome}}</b></td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm my-1"><i class="bi bi-eye"></i></button><br>
+                    <button type="button" class="btn btn-warning btn-sm my-1"><i
+                            class="bi bi-vector-pen"></i></button><br>
+                    <button type="button" class="btn btn-danger btn-sm my-1"><i class="bi bi-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
