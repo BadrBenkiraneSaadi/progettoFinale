@@ -15,7 +15,6 @@ export class ClientiComponent implements OnInit {
   }
 
   caricaClienti() {
-    console.log('oppalà');
     this.SClienti.getAllClienti().subscribe(res => {
       let aux: IClienti[] = res.content;
       this.clienti = aux.filter(clienti => clienti.indirizzoSedeLegale != null);

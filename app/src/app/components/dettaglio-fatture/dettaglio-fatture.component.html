@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row my-5">
-        <div class="col-9">
+        <div class="col-11">
             <h3>Dettaglio fattura</h3>
-            Numero fattura: <br>
-            Data emissione: <br>
-            Stato: <br>
-            importo:
+            <b>Numero fattura:</b> {{fattura.numero}}<br>
+            <b>Data emissione:</b> {{fattura.data | date:'longDate'}}<br>
+            <b>Stato:</b> {{fattura.stato.nome}}<br>
+            <b>Importo:</b> {{fattura.importo}}
         </div>
-        <div class="col-3">
-            <button type="button" class="btn btn-success btn-sm my-1" placement="right" ngbTooltip="Pagata"><i
+        <div class="col-1">
+            <button type="button" class="btn btn-success btn-sm my-1" placement="right" ngbTooltip="Pagata" *ngIf="stato"><i
                     class="bi bi-check-lg"></i></button><br>
             <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica"><i
                     class="bi bi-vector-pen"></i></button><br>
@@ -19,13 +19,13 @@
     <div class="row my-5">
         <div class="col">
             <h3>Cliente</h3>
-            Ragione sociale: <br>
-            P.Iva: <br>
-            Indirizzo sede legale: <br>
-            Indirizzo sede operativa: <br>
-            Telefono: <br>
-            Email: <br>
-            PEC:
+            <b>Ragione sociale:</b> {{fattura.cliente.ragioneSociale}}<br>
+            <b>P.Iva:</b> {{fattura.cliente.partitaIva}}<br>
+            <b>Indirizzo sede legale:</b> {{fattura.cliente.indirizzoSedeLegale.via}} {{fattura.cliente.indirizzoSedeLegale.civico}}<br>
+            <b>Indirizzo sede operativa:</b> {{fattura.cliente.indirizzoSedeLegale.via}} {{fattura.cliente.indirizzoSedeLegale.civico}}}<br>
+            <b>Telefono:</b> {{fattura.cliente.telefono}}<br>
+            <b>Email:</b> {{fattura.cliente.email}}<br>
+            <b>PEC:</b> {{fattura.cliente.pec }}
         </div>
     </div>
 </div>
