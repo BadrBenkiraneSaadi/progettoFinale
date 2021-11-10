@@ -17,8 +17,8 @@ export class SClientiService {
     return this.http.get<IApi>(this.urlApiAll);
   }
 
-  getClientiById(from:string,to:string) {
-    return this.http.get<IClienti>(this.urlApi+'fatturatoannuale?from='+from+'&to='+to);
+  getClientiById(id:string) {
+    return this.http.get<IClienti>(this.urlApi+id);
   }
 
   getClientiByDataInserimento(from:string,to:string) {

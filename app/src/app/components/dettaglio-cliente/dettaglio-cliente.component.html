@@ -1,1 +1,76 @@
-<p>dettaglio-cliente works!</p>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-11">
+            <h3>Cliente</h3>
+            <b>Ragione sociale:</b> {{cliente.ragioneSociale}}<br>
+            <b>P.Iva:</b> {{cliente.partitaIva}}<br>
+            <b>Indirizzo sede legale:</b> {{cliente.indirizzoSedeLegale.via}} {{cliente.indirizzoSedeLegale.civico}}<br>
+            <b>Indirizzo sede operativa:</b> {{cliente.indirizzoSedeOperativa.via}} {{cliente.indirizzoSedeOperativa.civico}}<br>
+            <b>Telefono:</b> {{cliente.telefono}}<br>
+            <b>Email:</b> {{cliente.email}}<br>
+            <b>PEC:</b> {{cliente.pec}}<br>
+            <b>Nome contatto:</b> {{cliente.nomeContatto}} {{cliente.cognomeContatto}}<br>
+            <b>Telefono contatto:</b> {{cliente.telefonoContatto}}<br>
+            <b>Email contatto:</b> {{cliente.emailContatto}}<br>
+            <b>Data ultimo contatto:</b> {{cliente.dataUltimoContatto}}
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica"><i
+                    class="bi bi-vector-pen"></i></button><br>
+            <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina"><i
+                    class="bi bi-trash"></i></button>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-6">
+            <h3>Fatture pagate</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Importo</th>
+                        <th scope="col">Anno</th>
+                        <th scope="col">Utilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of fatturePagate ">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.cliente.ragioneSociale}}</td>
+                        <td>{{item.importo | currency:'€ '}}</td>
+                        <td>{{item.anno}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h3>Fatture da pagare</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Importo</th>
+                        <th scope="col">Anno</th>
+                        <th scope="col">Utilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of fattureDaPagare ">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.cliente.ragioneSociale}}</td>
+                        <td>{{item.importo | currency:'€ '}}</td>
+                        <td>{{item.anno}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio"><i class="bi bi-eye"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
