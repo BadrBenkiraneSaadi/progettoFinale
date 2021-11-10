@@ -11,6 +11,11 @@ import { ClientiComponent } from './components/clienti/clienti.component';
 import { FormsModule } from '@angular/forms';
 import { FattureComponent } from './components/fatture/fatture.component';
 import { NewclienteComponent } from './components/newcliente/newcliente.component';
+import { DettaglioClienteComponent } from './components/dettaglio-cliente/dettaglio-cliente.component';
+import { DettaglioFattureComponent } from './components/dettaglio-fatture/dettaglio-fatture.component';
+import { NewfatturaComponent } from './components/newfattura/newfattura.component';
+import { ModficaClienteComponent } from './components/modfica-cliente/modfica-cliente.component';
+import { ModficaFatturaComponent } from './components/modfica-fattura/modfica-fattura.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { NewclienteComponent } from './components/newcliente/newcliente.componen
     MyheaderComponent,
     ClientiComponent,
     FattureComponent,
-    NewclienteComponent
+    NewclienteComponent,
+    DettaglioClienteComponent,
+    DettaglioFattureComponent,
+    NewfatturaComponent,
+    ModficaClienteComponent,
+    ModficaFatturaComponent
   ],
   imports: [
     BrowserModule,
