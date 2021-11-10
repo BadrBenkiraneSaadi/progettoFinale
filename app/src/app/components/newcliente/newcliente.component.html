@@ -2,112 +2,136 @@
     <form>
         <div class="form-group">
             <label for="ragioneSociale">Ragione Sociale</label>
-            <input type="text" class="form-control" id="ragioneSociale" aria-describedby="emailHelp"
-                placeholder="Ragione Sociale...">
+            <input type="text" class="form-control" id="ragioneSociale" placeholder="Ragione Sociale..."
+                name="ragioneSociale" [(ngModel)]="nuovoCliente.ragioneSociale">
         </div>
         <div class="form-group">
             <label for="partitaIva">Partita Iva</label>
-            <input type="text" class="form-control" id="partitaIva" aria-describedby="emailHelp"
-                placeholder="Partita Iva...">
+            <input type="text" class="form-control" id="partitaIva" placeholder="Partita Iva..." name="partitaIva"
+                [(ngModel)]="nuovoCliente.partitaIva">
         </div>
         <div class="form-group">
             <label for="tipoCliente">Tipo Cliente</label>
-            <input type="text" class="form-control" id="tipoCliente" aria-describedby="emailHelp"
-                placeholder="Tipo Cliente...">
+            <input type="text" class="form-control" id="tipoCliente" placeholder="Partita Iva..." name="tipoCliente"
+                [(ngModel)]="nuovoCliente.tipoCliente">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email...">
+            <input type="text" class="form-control" id="email" placeholder="Email..." name="email"
+                [(ngModel)]="nuovoCliente.email">
         </div>
         <div class="form-group">
             <label for="pec">Pec</label>
-            <input type="email" class="form-control" id="pec" aria-describedby="emailHelp" placeholder="Pec...">
+            <input type="text" class="form-control" id="pec" placeholder="Pec..." name="pec"
+                [(ngModel)]="nuovoCliente.pec">
         </div>
         <div class="form-group">
             <label for="telefono">Telefono</label>
-            <input type="tel" class="form-control" id="telefono" aria-describedby="emailHelp" placeholder="Telefono...">
+            <input type="text" class="form-control" id="telefono" placeholder="Telefono..." name="telefono"
+                [(ngModel)]="nuovoCliente.telefono">
         </div>
         <div class="form-group">
             <label for="nomeContatto">Nome Contatto</label>
-            <input type="text" class="form-control" id="nomeContatto" aria-describedby="emailHelp" placeholder="Nome Contatto...">
+            <input type="text" class="form-control" id="nomeContatto" placeholder="Nome Contatto..." name="nomeContatto"
+                [(ngModel)]="nuovoCliente.nomeContatto">
         </div>
         <div class="form-group">
-            <label for="cognomeContatto">Cognome Contatto</label>
-            <input type="text" class="form-control" id="cognomeContatto" aria-describedby="emailHelp" placeholder="Cognome Contatto...">
+            <label for="cognomeContatto">Nome Contatto</label>
+            <input type="text" class="form-control" id="cognomeContatto" placeholder="Cognome Contatto..." name="cognomeContatto"
+                [(ngModel)]="nuovoCliente.cognomeContatto">
         </div>
         <div class="form-group">
             <label for="telefonoContatto">Telefono Contatto</label>
-            <input type="text" class="form-control" id="telefonoContatto" aria-describedby="emailHelp" placeholder="Telefono Contatto...">
-        </div>
-        <div class="form-group">
-            <label for="via">Via</label>
-            <input type="text" class="form-control" id="via" aria-describedby="emailHelp" placeholder="Via...">
-        </div>
-        <div class="form-group">
-            <label for="civico">Civico</label>
-            <input type="text" class="form-control" id="civico" aria-describedby="emailHelp" placeholder="Civico...">
-        </div>
-        <div class="form-group">
-            <label for="cap">Cap</label>
-            <input type="text" class="form-control" id="cap" aria-describedby="emailHelp" placeholder="Cap...">
+            <input type="text" class="form-control" id="telefonoContatto" placeholder="Telefono Contatto..." name="telefonoContatto"
+                [(ngModel)]="nuovoCliente.telefonoContatto">
         </div>
         <div class="form-group">
             <label for="emailContatto">Email Contatto</label>
-            <input type="text" class="form-control" id="emailContatto" aria-describedby="emailHelp" placeholder="Enter Contatto...">
+            <input type="text" class="form-control" id="emailContatto" placeholder="Email Contatto..." name="emailContatto"
+                [(ngModel)]="nuovoCliente.emailContatto">
         </div>
         <div class="form-group">
-            <label for="localita">Localita</label>
-            <input type="text" class="form-control" id="localita" aria-describedby="emailHelp" placeholder="Localita...">
+            <label for="ViaSedeOperativa">Via Sede Operativa</label>
+            <input type="text" class="form-control" id="ViaSedeOperativa" placeholder="Via Sede Operativa..." name="ViaSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.via">
         </div>
         <div class="form-group">
-            <label for="comune">Comune</label>
-            <input type="text" class="form-control" id="comune" aria-describedby="emailHelp" placeholder="Comune...">
+            <label for="civicoSedeOperativa">Civico Sede Operativa</label>
+            <input type="text" class="form-control" id="civicoSedeOperativa" placeholder="Civico Sede Operativa..." name="civicoSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.civico">
         </div>
         <div class="form-group">
-            <label for="provincia">Provincia</label>
-            <input type="text" class="form-control" id="provincia" aria-describedby="emailHelp" placeholder="provincia...">
+            <label for="capSedeOperativa">Cap Sede Operativa</label>
+            <input type="text" class="form-control" id="capSedeOperativa" placeholder="Cap Sede Operativa..." name="capSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.cap">
         </div>
         <div class="form-group">
-            <label for="sigla">Sigla</label>
-            <input type="text" class="form-control" id="sigla" aria-describedby="emailHelp" placeholder="sigla...">
+            <label for="localitaSedeOperativa">Località Sede Operativa</label>
+            <input type="text" class="form-control" id="localitaSedeOperativa" placeholder="Località Sede Operativa..." name="localitaSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.localita">
         </div>
         <div class="form-group">
-            <label for="via">Via</label>
-            <input type="text" class="form-control" id="via" aria-describedby="emailHelp" placeholder="Via">
+            <label for="comuneSedeOperativa">Comune Sede Operativa</label>
+            <input type="text" class="form-control" id="comuneSedeOperativa" placeholder="Comune Sede Operativa..." name="comuneSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.comune.nome">
         </div>
         <div class="form-group">
-            <label for="civico">Civico</label>
-            <input type="text" class="form-control" id="civico" aria-describedby="emailHelp" placeholder="Civico...">
+            <label for="provinciaSedeOperativa">Provincia Sede Operativa</label>
+            <input type="text" class="form-control" id="provinciaSedeOperativa" placeholder="Provincia Sede Operativa..." name="provinciaSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome">
         </div>
         <div class="form-group">
-            <label for="cap">Cap</label>
-            <input type="text" class="form-control" id="cap" aria-describedby="emailHelp" placeholder="Cap...">
+            <label for="siglaSedeOperativa">Sigla Provincia Sede Operativa</label>
+            <input type="text" class="form-control" id="siglaSedeOperativa" placeholder="Sigla Provincia Sede Operativa..." name="siglaSedeOperativa"
+                [(ngModel)]="nuovoCliente.indirizzoSedeOperativa.comune.provincia.sigla">
+        </div>
+        <!------------------------------------------------------------------------------------------------------------------------------>
+        <div class="form-group">
+            <label for="ViaSedeLegale">Via Sede Legale</label>
+            <input type="text" class="form-control" id="ViaSedeLegale" placeholder="Via Sede Legale..." name="ViaSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.via">
         </div>
         <div class="form-group">
-            <label for="localita">Localita</label>
-            <input type="text" class="form-control" id="localita" aria-describedby="emailHelp" placeholder="Localita...">
+            <label for="civicoSedeLegale">Civico Sede Legale</label>
+            <input type="text" class="form-control" id="civicoSedeLegale" placeholder="Civico Sede Legale..." name="civicoSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.civico">
         </div>
         <div class="form-group">
-            <label for="comune">Comune</label>
-            <input type="text" class="form-control" id="comune" aria-describedby="emailHelp" placeholder="Comune...">
+            <label for="capSedeLegale">Cap Sede Legale</label>
+            <input type="text" class="form-control" id="capSedeLegale" placeholder="Cap Sede Legale..." name="capSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.cap">
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Provincia</label>
-            <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Provincia...">
+            <label for="localitaSedeLegale">Località Sede Legale</label>
+            <input type="text" class="form-control" id="localitaSedeLegale" placeholder="Località Sede Legale..." name="localitaSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.localita">
         </div>
         <div class="form-group">
-            <label for="sigla">Sigla</label>
-            <input type="text" class="form-control" id="sigla" aria-describedby="emailHelp" placeholder="Sigla...">
+            <label for="comuneSedeLegale">Comune Sede Legale</label>
+            <input type="text" class="form-control" id="comuneSedeLegale" placeholder="Comune Sede Legale..." name="comuneSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.comune.nome">
         </div>
         <div class="form-group">
-            <label for="dataUltimoContatto">Data Ultimo Contatto</label>
-            <input type="text" class="form-control" id="dataUltimoContatto" aria-describedby="emailHelp" placeholder="Data ultimo contatto">
+            <label for="provinciaSedeLegale">Provincia Sede Legale</label>
+            <input type="text" class="form-control" id="provinciaSedeLegale" placeholder="Provincia Sede Legale..." name="provinciaSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.comune.provincia.nome">
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Fatturato Annuale</label>
-            <input type="number" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="siglaSedeLegale">Sigla Provincia Sede Legale</label>
+            <input type="text" class="form-control" id="siglaSedeLegale" placeholder="Sigla Provincia Sede Legale..." name="siglaSedeLegale"
+                [(ngModel)]="nuovoCliente.indirizzoSedeLegale.comune.provincia.sigla">
+        </div>
+        <div class="form-group">
+            <label for="dataUltimoContatto">Data UltimoContatto</label>
+            <input type="text" class="form-control" id="dataUltimoContatto" placeholder="Data Inserimento..." name="dataUltimoContatto"
+                [(ngModel)]="nuovoCliente.dataUltimoContatto">
+        </div>
+        <div class="form-group">
+            <label for="fatturatoAnnuale">Fatturato Annuale</label>
+            <input type="text" class="form-control" id="fatturatoAnnuale" placeholder="Fatturato Inserimento..." name="fatturatoAnnuale"
+                [(ngModel)]="nuovoCliente.fatturatoAnnuale">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="creaCliente()">Submit</button>
     </form>
 </div>

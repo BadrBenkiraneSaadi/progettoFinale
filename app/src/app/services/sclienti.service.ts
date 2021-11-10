@@ -17,6 +17,10 @@ export class SClientiService {
     return this.http.get<IApi>(this.urlApiAll);
   }
 
+  getTipoClienti(){
+    return this.http.get(this.urlApi+'tipicliente');
+  }
+
   getClientiById(id:string) {
     return this.http.get<IClienti>(this.urlApi+id);
   }
@@ -37,7 +41,7 @@ export class SClientiService {
     return this.http.get<IClienti>(this.urlApi+'fatturatoannuale?from='+from+'&to='+to);
   }
 
-  postClienti(item:IClienti){
+  postCliente(item:IClienti){
     return this.http.post(this.urlApi, item);
   }
 

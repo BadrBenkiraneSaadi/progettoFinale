@@ -5,7 +5,7 @@ export interface IComuni {
     provincia: {
         id?: number,
         nome: string,
-        sigla: string
+        sigla?: string
     }
 
 }

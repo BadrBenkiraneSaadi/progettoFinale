@@ -8,11 +8,11 @@
             <b>Importo:</b> {{fattura.importo}}
         </div>
         <div class="col-1">
-            <button type="button" class="btn btn-success btn-sm my-1" placement="right" ngbTooltip="Pagata" *ngIf="stato"><i
+            <button type="button" class="btn btn-success btn-sm my-1" placement="right" ngbTooltip="Pagata" *ngIf="stato" (click)="modificaStato()"><i
                     class="bi bi-check-lg"></i></button><br>
             <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica"><i
                     class="bi bi-vector-pen"></i></button><br>
-            <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina"><i
+            <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina" (click)="delete()"><i
                     class="bi bi-trash"></i></button>
         </div>
     </div>
