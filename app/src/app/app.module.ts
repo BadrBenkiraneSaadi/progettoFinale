@@ -10,13 +10,15 @@ import { MyheaderComponent } from './components/myheader/myheader.component';
 import { ClientiComponent } from './components/clienti/clienti.component';
 import { FormsModule } from '@angular/forms';
 import { FattureComponent } from './components/fatture/fatture.component';
+import { NewclienteComponent } from './components/newcliente/newcliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyheaderComponent,
     ClientiComponent,
-    FattureComponent
+    FattureComponent,
+    NewclienteComponent
   ],
   imports: [
     BrowserModule,

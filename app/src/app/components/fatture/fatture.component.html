@@ -24,10 +24,9 @@
                 <td>{{item.anno}}</td>
                 <td><b>{{item.stato.nome}}</b></td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-sm my-1"><i class="bi bi-eye"></i></button><br>
-                    <button type="button" class="btn btn-warning btn-sm my-1"><i
-                            class="bi bi-vector-pen"></i></button><br>
-                    <button type="button" class="btn btn-danger btn-sm my-1" (click)="delete(item.id)"><i class="bi bi-trash"></i></button>
+                    <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio"><i class="bi bi-eye"></i></button><br>
+                    <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica"><i class="bi bi-vector-pen"></i></button><br>
+                    <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina" (click)="delete(item.id)"><i class="bi bi-trash"></i></button>
                 </td>
             </tr>
         </tbody>
