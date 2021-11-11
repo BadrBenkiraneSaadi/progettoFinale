@@ -8,8 +8,12 @@ import { NewclienteComponent } from './components/newcliente/newcliente.componen
 import { NewfatturaComponent } from './components/newfattura/newfattura.component';
 
 const routes: Routes = [
-  {
+  /* {
     path: '',
+    component: ClientiComponent
+  }, */
+  {
+    path: 'cliente',
     pathMatch: 'full',
     component: ClientiComponent
   },
@@ -31,7 +35,8 @@ const routes: Routes = [
   },
   {
     path:'fattura/dettaglio/:id',
-    component: DettaglioFattureComponent
+    component: DettaglioFattureComponent,
+    //canActivate: true
   },
   {
     path:'fattura/:modifica/:id',

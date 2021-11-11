@@ -19,7 +19,7 @@
                 class="bi bi-file-earmark-plus"></i></button><br>
             <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica" [routerLink]="[ '/cliente/modifica/'+ cliente.id ]"><i
                     class="bi bi-vector-pen"></i></button><br>
-            <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina"><i
+            <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina" (click)="delete(cliente.id)"><i
                     class="bi bi-trash"></i></button>
         </div>
     </div>

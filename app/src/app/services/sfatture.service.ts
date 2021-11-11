@@ -38,7 +38,7 @@ export class SFattureService {
   }
 
   getFatturaByImportoBetween(from:string,to:string){
-    return this.http.get<IFatture>(this.urlApi+'importo/?from='+from+'&to='+to+'&sort=id,ASC');
+    return this.http.get<IFatture>(this.urlApi+'importo/?from='+from+'&to='+to+'&sort=id,DESC');
   }
 
   postFattura(item:Object){

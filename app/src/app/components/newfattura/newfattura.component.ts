@@ -85,7 +85,7 @@ export class NewfatturaComponent implements OnInit {
     console.log(this.nuovaFattura)
     this.SFatture.postFattura(this.nuovaFattura).subscribe(res => {
       console.log(res);
-      this.router.navigate(['/']);
+      this.router.navigate(['/cliente']);
     });
   }
 
@@ -105,7 +105,7 @@ export class NewfatturaComponent implements OnInit {
       
       this.SFatture.putFattura(this.nuovaFattura.id.toString(),this.modFattura).subscribe(res => {
         console.log(res);
-      this.router.navigate(['/']);
+      this.router.navigate(['/cliente']);
       })
     }
   }

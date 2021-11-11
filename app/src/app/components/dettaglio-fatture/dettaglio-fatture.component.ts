@@ -105,7 +105,7 @@ export class DettaglioFattureComponent implements OnInit {
   delete(): void {
     
       this.SFatture.deleteFattura(this.id).subscribe(res => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/cliente']);
       });
     
   }

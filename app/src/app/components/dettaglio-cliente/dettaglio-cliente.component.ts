@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IClienti } from 'src/app/interfaces/iclienti';
 import { IFatture } from 'src/app/interfaces/ifatture';
 import { SClientiService } from 'src/app/services/sclienti.service';
@@ -11,7 +11,7 @@ import { SFattureService } from 'src/app/services/sfatture.service';
   styleUrls: ['./dettaglio-cliente.component.css']
 })
 export class DettaglioClienteComponent implements OnInit {
-  cliente:IClienti={
+  cliente: IClienti = {
     ragioneSociale: '',
     partitaIva: '',
     tipoCliente: '',
@@ -59,24 +59,28 @@ export class DettaglioClienteComponent implements OnInit {
     fatturatoAnnuale: 0
   };
 
-  fatture:IFatture[]=[];
-  fatturePagate:IFatture[]=[];
-  fattureDaPagare:IFatture[]=[];
+  fatture: IFatture[] = [];
+  fatturePagate: IFatture[] = [];
+  fattureDaPagare: IFatture[] = [];
 
-  constructor(private SClienti:SClientiService, private SFatture:SFattureService, private route:ActivatedRoute) { 
+  constructor(
+    private SClienti: SClientiService,
+    private SFatture: SFattureService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.route.params.subscribe(element => {
       let x = element['id'];
       if (x) {
         console.log(x);
         this.SClienti.getClientiById(x).subscribe(response => {
           this.cliente = response;
-          if(this.cliente.id){
+          if (this.cliente.id) {
             this.SFatture.getFatturaByCliente(this.cliente.id.toString()).subscribe(res => {
-              this.fatture=res.content;
-              this.fattureDaPagare=this.fatture.filter(element=>element.stato.nome=='NON PAGATA');
-              this.fatturePagate=this.fatture.filter(element=>element.stato.nome=='PAGATA');              
+              this.fatture = res.content;
+              this.fattureDaPagare = this.fatture.filter(element => element.stato.nome == 'NON PAGATA');
+              this.fatturePagate = this.fatture.filter(element => element.stato.nome == 'PAGATA');
             })
-          }          
+          }
         });
       }
     });
@@ -85,4 +89,11 @@ export class DettaglioClienteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(id: number | undefined): void {
+    if (id) {
+      this.SClienti.deleteClienti(id.toString()).subscribe(res => {
+        this.router.navigate(['/cliente']);
+      });
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IApi } from 'src/app/interfaces/iapi';
 import { IClienti } from 'src/app/interfaces/iclienti';
 import { IComuni } from 'src/app/interfaces/icomuni';
 import { IProvince } from 'src/app/interfaces/iprovince';
@@ -85,127 +86,129 @@ export class NewclienteComponent implements OnInit {
     });
   }
 
-  creaCliente(): void {
+
+
+  async creaCliente(): Promise<void> {
     console.log(this.nuovoCliente);
-    this.SProvince.getAllProvince().subscribe(res => {
-      let province: IProvince[] = res.content;
-      let provinciaLegale: boolean = false;
-      let provinciaOperativa: boolean = false;
 
-      province.forEach(element => {
-        if (element.nome == this.nuovoCliente.indirizzoSedeLegale.comune.provincia.nome) {
-          provinciaLegale = true;
-        }
-        if (element.nome == this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome) {
-          provinciaOperativa = true;
-        }
-      });
 
-      if (provinciaLegale == false) {
-        this.SProvince.postProvincia({
-          nome: this.nuovoCliente.indirizzoSedeLegale.comune.provincia.nome,
-          sigla: this.nuovoCliente.indirizzoSedeLegale.comune.provincia.sigla
-        }).subscribe(res => {
-          console.log(res);
-        });
-      }
-      if (provinciaOperativa == false) {
-        this.SProvince.postProvincia({
-          nome: this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome,
-          sigla: this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.sigla
-        }).subscribe(res => {
-          console.log(res);
-          this.setComuni();
-        });
-      }
-      else {
-        this.setComuni();
-      }
-
+    await this.checkProvincia(this.nuovoCliente.indirizzoSedeLegale.comune.provincia.nome, this.nuovoCliente.indirizzoSedeLegale.comune.provincia.sigla);
+    await this.checkProvincia(this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome, this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome);
+    await this.setComuni();
+    console.log(this.nuovoCliente);
+    this.SClienti.postCliente(this.nuovoCliente).subscribe(response => {
+      this.router.navigate(['/cliente']);
+      console.log(response);
     });
   }
 
-  setComuni() {
-    this.SProvince.getAllProvince().subscribe(res => {
-      let nuovoidlegale: number = 0;
-      let nuovoidoperativa: number = 0;
-      let province: IProvince[] = res.content;
+  checkProvincia(sedeNome: string, sedeSigla: string) {
+    return new Promise<void>(resolve => {
+      this.SProvince.getAllProvince().subscribe(res => {
+        let province: IProvince[] = res.content;
+        let provincia: boolean = false;
 
-      province.forEach(element => {
-        if (element.nome == this.nuovoCliente.indirizzoSedeLegale.comune.provincia.nome) {
-          if (element.id) {
-            nuovoidlegale = element.id
+        for (const prov of province) {
+          if (prov.nome == sedeNome) {
+            provincia = true;
           }
         }
-        if (element.nome == this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome) {
-          if (element.id) {
-            nuovoidoperativa = element.id;
-          }
+        console.log(provincia);
+
+        if (!provincia) {
+          this.SProvince.postProvincia({
+            nome: sedeNome,
+            sigla: sedeSigla
+          }).subscribe(res => {
+            console.log(res);
+            resolve();
+          });
+        } else {
+          resolve();
         }
       });
+    })
 
-      this.nuovoCliente.indirizzoSedeLegale.comune.provincia.id = nuovoidlegale;
-      this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.id = nuovoidoperativa;
+  }
 
-      this.SComuni.getAllComuni().subscribe(resp => {
-        let comuni: IComuni[] = resp.content;
-        let idcomunilegale: number = 0;
-        let idcomunioperativa: number = 0;
-        let comuneLegale: boolean = false;
-        let comuneOperativa: boolean = false;
+  setComuni() {
+    return new Promise<void>(resolve => {
+      this.SProvince.getAllProvince().subscribe(async (res: IApi) => {
+        let province: IProvince[] = res.content;
 
-        comuni.forEach(element => {
-          if (element.nome == this.nuovoCliente.indirizzoSedeLegale.comune.nome) {
-            comuneLegale = true;
+        province.forEach(element => {
+          if (element.nome == this.nuovoCliente.indirizzoSedeLegale.comune.provincia.nome) {
             if (element.id) {
-              idcomunilegale = element.id
+              this.nuovoCliente.indirizzoSedeLegale.comune.provincia.id = element.id
             }
           }
-          if (element.nome == this.nuovoCliente.indirizzoSedeOperativa.comune.nome) {
-            comuneOperativa = true;
+          if (element.nome == this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome) {
             if (element.id) {
-              idcomunioperativa = element.id
+              this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.id = element.id;
             }
           }
         });
 
-        if (comuneLegale == false) {
+        if (this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.id) {
+          this.nuovoCliente.indirizzoSedeOperativa.comune.id = await this.checkComuni(this.nuovoCliente.indirizzoSedeOperativa.comune.nome, this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.id)
+          console.log(this.nuovoCliente.indirizzoSedeOperativa.comune.id)
+        }
+        if (this.nuovoCliente.indirizzoSedeLegale.comune.provincia.id) {
+          this.nuovoCliente.indirizzoSedeLegale.comune.id = await this.checkComuni(this.nuovoCliente.indirizzoSedeLegale.comune.nome, this.nuovoCliente.indirizzoSedeLegale.comune.provincia.id)
 
-          this.SComuni.postComune({
-            nome: this.nuovoCliente.indirizzoSedeLegale.comune.nome,
-            provincia: {
-              id: nuovoidlegale
-            }
-          }).subscribe(respo => {
-            console.log(respo);
-            this.nuovoCliente.indirizzoSedeLegale.comune.id = respo.id;
-          });
         }
-        if (comuneOperativa == false) {
-          this.SComuni.postComune({
-            nome: this.nuovoCliente.indirizzoSedeOperativa.comune.nome,
-            provincia: {
-              id: nuovoidoperativa
-            }
-          }).subscribe(respo => {
-            console.log(respo);
-            this.nuovoCliente.indirizzoSedeOperativa.comune.id = respo.id;
-            this.SClienti.postCliente(this.nuovoCliente).subscribe(response => {
-              this.router.navigate(['/']);
-              console.log(response);
-            });
-          });
-        }
-        else {
-          this.nuovoCliente.indirizzoSedeLegale.comune.id = idcomunilegale;
-          this.nuovoCliente.indirizzoSedeOperativa.comune.id = idcomunioperativa;
-          this.SClienti.postCliente(this.nuovoCliente).subscribe(response => {
-            this.router.navigate(['/']);
-            console.log(response);
-          });
-        }
+        resolve();
       });
     });
+  }
+
+  checkComuni(sedeNome: string, idProvinciaSede: number): any {
+    return new Promise<number>(resolve => {
+      this.SComuni.getAllComuni().subscribe(resp => {
+        let comuni: IComuni[] = resp.content;
+        let idcomune: number = 0;;
+        let comune: boolean = false;
+
+        for (const element of comuni) {
+          if (element.nome == sedeNome) {
+            comune = true;
+            if (element.id) {
+              idcomune = element.id
+            }
+          }
+        }
+
+        /* comuni.forEach(element => {
+          if (element.nome == sedeNome) {
+            comune = true;
+            if (element.id) {
+              idcomune = element.id
+            }
+          }
+        }); */
+
+        if (comune == false) {
+
+          this.SComuni.postComune({
+            nome: sedeNome,
+            provincia: {
+              id: idProvinciaSede
+            }
+          }).subscribe(respo => {
+            console.log(respo);
+            if (respo.id) {
+              idcomune = respo.id;
+            }
+            console.log(idcomune);
+            resolve(idcomune);
+          });
+        } else {
+          resolve(idcomune);
+        }
+
+      });
+    });
+
   }
 
   caricaTipo() {
@@ -218,7 +221,7 @@ export class NewclienteComponent implements OnInit {
     if (this.nuovoCliente.id) {
       this.SClienti.putClienti(this.nuovoCliente.id.toString(), this.nuovoCliente).subscribe(res => {
         console.log(res);
-        this.router.navigate(['/']);
+        this.router.navigate(['/cliente']);
       })
     }
   }

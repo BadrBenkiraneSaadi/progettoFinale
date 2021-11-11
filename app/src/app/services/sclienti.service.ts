@@ -8,7 +8,7 @@ import { IClienti } from '../interfaces/iclienti';
   providedIn: 'root'
 })
 export class SClientiService {
-  private urlApiAll=environment.urlApi+'/api/clienti?page=0&size=2000&sort=id,ASC';
+  private urlApiAll=environment.urlApi+'/api/clienti?page=0&size=2000&sort=id,DESC';
   private urlApi=environment.urlApi+'/api/clienti/';
 
   constructor(private http:HttpClient) { }
