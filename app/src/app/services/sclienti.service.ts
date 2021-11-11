@@ -18,7 +18,7 @@ export class SClientiService {
   }
 
   getTipoClienti(){
-    return this.http.get(this.urlApi+'tipicliente');
+    return this.http.get<string[]>(this.urlApi+'tipicliente');
   }
 
   getClientiById(id:string) {

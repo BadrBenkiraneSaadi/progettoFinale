@@ -28,7 +28,6 @@ export class FattureComponent implements OnInit {
     console.log(this.filtro);
     if(this.filtro=='PAGATA'){
       this.SFatture.getFatturaByStato('1').subscribe(res => {
-        console.log(res);
         this.fatture = res.content;
       });
     }else if (this.filtro=='NON PAGATA'){

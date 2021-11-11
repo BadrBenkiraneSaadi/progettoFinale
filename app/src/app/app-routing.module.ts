@@ -6,16 +6,12 @@ import { DettaglioFattureComponent } from './components/dettaglio-fatture/dettag
 import { FattureComponent } from './components/fatture/fatture.component';
 import { ModficaClienteComponent } from './components/modfica-cliente/modfica-cliente.component';
 import { ModficaFatturaComponent } from './components/modfica-fattura/modfica-fattura.component';
-import { RicercaComponent } from './components/ricerca/ricerca.component';
+import { NewclienteComponent } from './components/newcliente/newcliente.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: RicercaComponent
-  },
-  {
-    path: 'clienti',
     component: ClientiComponent
   },
   {
@@ -37,6 +33,10 @@ const routes: Routes = [
   {
     path:'fattura/modifica/:id',
     component: ModficaFatturaComponent
+  },
+  {
+    path:'newclient',
+    component:NewclienteComponent
   }
 ];
 

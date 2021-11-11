@@ -16,7 +16,6 @@ import { DettaglioFattureComponent } from './components/dettaglio-fatture/dettag
 import { NewfatturaComponent } from './components/newfattura/newfattura.component';
 import { ModficaClienteComponent } from './components/modfica-cliente/modfica-cliente.component';
 import { ModficaFatturaComponent } from './components/modfica-fattura/modfica-fattura.component';
-import { RicercaComponent } from './components/ricerca/ricerca.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { RicercaComponent } from './components/ricerca/ricerca.component';
     DettaglioFattureComponent,
     NewfatturaComponent,
     ModficaClienteComponent,
-    ModficaFatturaComponent,
-    RicercaComponent
+    ModficaFatturaComponent
   ],
   imports: [
     BrowserModule,

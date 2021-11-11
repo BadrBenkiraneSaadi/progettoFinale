@@ -12,6 +12,7 @@ import { SProvinceService } from 'src/app/services/sprovince.service';
   styleUrls: ['./newcliente.component.css']
 })
 export class NewclienteComponent implements OnInit {
+  tipo:string[] = [];
   nuovoCliente: IClienti = {
     ragioneSociale: '',
     partitaIva: '',
@@ -56,6 +57,7 @@ export class NewclienteComponent implements OnInit {
     let data = new Date();
     this.nuovoCliente.dataInserimento = "2019-06-01T08:11:01.911+00:00"/* data.getFullYear() +"-"+ data.getMonth() +"-"+ data.getDay() +"T"+data.getHours()+":"+ data.getMinutes() +":"+ data.getMilliseconds()+"+00:00" */;
     this.nuovoCliente.dataUltimoContatto= "2021-03-24T21:32:06.375+00:00"/* data.getFullYear() +"-"+ data.getMonth() +"-"+ data.getDay() +"T"+data.getHours()+":"+ data.getMinutes() +":"+ data.getMilliseconds()+"+00:00" */;
+    this.caricaTipo();
   }
 
   ngOnInit(): void {
@@ -177,6 +179,12 @@ export class NewclienteComponent implements OnInit {
           this.SClienti.postCliente(this.nuovoCliente).subscribe(response => console.log(response));
         }
       });
+    });
+  }
+
+  caricaTipo() {
+    this.SClienti.getTipoClienti().subscribe(res=>{
+      this.tipo=res;
     });
   }
 }
