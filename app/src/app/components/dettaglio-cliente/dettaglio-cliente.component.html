@@ -15,9 +15,9 @@
             <b>Data ultimo contatto:</b> {{cliente.dataUltimoContatto}}
         </div>
         <div class="col-1">
-            <button type="button" class="btn btn-success btn-sm my-1" placement="right" ngbTooltip="Nuova Fattura"><i
+            <button type="button" class="btn btn-success btn-sm my-1" placement="right" ngbTooltip="Nuova Fattura" [routerLink]="[ '/newfattura/'+ cliente.id]"><i
                 class="bi bi-file-earmark-plus"></i></button><br>
-            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica"><i
+            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica" [routerLink]="[ '/cliente/modifica/'+ cliente.id ]"><i
                     class="bi bi-vector-pen"></i></button><br>
             <button type="button" class="btn btn-danger btn-sm my-1" placement="right" ngbTooltip="Elimina"><i
                     class="bi bi-trash"></i></button>
@@ -43,7 +43,8 @@
                         <td>{{item.importo | currency:'€ '}}</td>
                         <td>{{item.anno}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio"><i class="bi bi-eye"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio" [routerLink]="[ '/fattura/dettaglio/' + item.id ]"><i class="bi bi-eye"></i></button>
+                            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica" [routerLink]="[ '/fattura/modifica/' + item.id ]"><i class="bi bi-vector-pen"></i></button><br>
                         </td>
                     </tr>
                 </tbody>
@@ -68,7 +69,8 @@
                         <td>{{item.importo | currency:'€ '}}</td>
                         <td>{{item.anno}}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio"><i class="bi bi-eye"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio" [routerLink]="[ '/fattura/dettaglio/' + item.id ]"><i class="bi bi-eye"></i></button>
+                            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica" [routerLink]="[ '/fattura/modifica/' + item.id ]"><i class="bi bi-vector-pen"></i></button><br>
                         </td>
                     </tr>
                 </tbody>

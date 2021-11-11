@@ -1,1 +1,29 @@
-<p>newfattura works!</p>
+<div class="container my-3">
+    <form>
+        <div class="form-group">
+            <label for="numero">Numero Fattura</label>
+            <input type="number" class="form-control" id="numero" placeholder="Numero Fattura..."
+                name="numero" [(ngModel)]="nuovaFattura.numero">
+        </div>
+        <div class="form-group">
+            <label for="anno">Anno Fattura</label>
+            <input type="number" class="form-control" id="anno" placeholder="Anno Fattura..." name="anno"
+                [(ngModel)]="nuovaFattura.anno">
+        </div>
+        <div class="form-group">
+            <label for="stato">Stato fattura</label>
+            <select class="form-control form-control-sm" [(ngModel)]="nuovaFattura.stato.nome" id="stato" name="stato">
+                <option value="PAGATA">Pagata</option>
+                <option value="NON PAGATA">Non pagata</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="importo">Importo</label>
+            <input type="number" class="form-control" id="importo" placeholder="Importo..." name="importo"
+                [(ngModel)]="nuovaFattura.importo">
+        </div>
+
+        <button type="submit" class="btn btn-primary" name="add" (click)="creaFattura()" *ngIf="add">Submit</button>
+        <button type="submit" class="btn btn-primary" name="put" (click)="modificaFattura()" *ngIf="put">Submit</button>
+    </form>
+</div>

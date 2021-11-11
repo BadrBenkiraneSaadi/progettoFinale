@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class MyHttpInterceptorInterceptor implements HttpInterceptor {
 
-  bearerAuth:string='eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYzNjU2MTcyMiwiZXhwIjoxNjM3NDI1NzIyfQ.gv-IvH3mXHNQ1Pq6SQexmaxwo5__PlYAAlMGJIrjoMDdUfCJSkAFQIFZZKRPf8oXoBb3N2XAT-zXHi_kyi_h_g';
+  bearerAuth:string='eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYzNjYzMzExNywiZXhwIjoxNjM3NDk3MTE3fQ.XYU6wg-LB6iVQG6rN__eg4gRG2Er2VtTbjG7UDRYHF8nz2Tms1ADSO-XmfuzHCHRykB-CNqUyLzA_FZOJ7kegw';
   tenantId:string='fe_0421';
   
   constructor() {}

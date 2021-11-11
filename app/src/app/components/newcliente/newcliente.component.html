@@ -12,8 +12,9 @@
         </div>
         <div class="form-group">
             <label for="tipoCliente">Tipo Cliente</label>
-            <select class="form-control form-control-sm" [(ngModel)]="nuovoCliente.tipoCliente">
-                <option value="item" *ngFor="let item of tipo">{{item}}</option>
+            <select class="form-control form-control-sm" [(ngModel)]="nuovoCliente.tipoCliente" name="tipoCliente">
+                <option value=""></option>
+                <option value={{item}} *ngFor="let item of tipo">{{item}}</option>
             </select>
         </div>
         <div class="form-group">
@@ -37,7 +38,7 @@
                 [(ngModel)]="nuovoCliente.nomeContatto">
         </div>
         <div class="form-group">
-            <label for="cognomeContatto">Nome Contatto</label>
+            <label for="cognomeContatto">Cognome Contatto</label>
             <input type="text" class="form-control" id="cognomeContatto" placeholder="Cognome Contatto..." name="cognomeContatto"
                 [(ngModel)]="nuovoCliente.cognomeContatto">
         </div>
@@ -123,6 +124,7 @@
                 [(ngModel)]="nuovoCliente.indirizzoSedeLegale.comune.provincia.sigla">
         </div>
 
-        <button type="submit" class="btn btn-primary" (click)="creaCliente()">Submit</button>
+        <button type="submit" class="btn btn-primary" name="add" (click)="creaCliente()" *ngIf="add">Submit</button>
+        <button type="submit" class="btn btn-primary" name="put" (click)="modificaCliente()" *ngIf="put">Submit</button>
     </form>
 </div>

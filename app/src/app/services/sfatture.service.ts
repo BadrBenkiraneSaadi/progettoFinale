@@ -41,7 +41,7 @@ export class SFattureService {
     return this.http.get<IFatture>(this.urlApi+'importo/?from='+from+'&to='+to+'&sort=id,ASC');
   }
 
-  postFattura(item:IFatture){
+  postFattura(item:Object){
     return this.http.post(this.urlApi, item);
   }
 
@@ -49,7 +49,7 @@ export class SFattureService {
     return this.http.post(this.urlApi+'find', item);
   }
 
-  putFattura(id:string,item:IFatture){
+  putFattura(id:string,item:Object){
     return this.http.put(this.urlApi+id, item);
   }
 

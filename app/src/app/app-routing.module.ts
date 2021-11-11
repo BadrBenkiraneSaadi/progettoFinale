@@ -4,9 +4,8 @@ import { ClientiComponent } from './components/clienti/clienti.component';
 import { DettaglioClienteComponent } from './components/dettaglio-cliente/dettaglio-cliente.component';
 import { DettaglioFattureComponent } from './components/dettaglio-fatture/dettaglio-fatture.component';
 import { FattureComponent } from './components/fatture/fatture.component';
-import { ModficaClienteComponent } from './components/modfica-cliente/modfica-cliente.component';
-import { ModficaFatturaComponent } from './components/modfica-fattura/modfica-fattura.component';
 import { NewclienteComponent } from './components/newcliente/newcliente.component';
+import { NewfatturaComponent } from './components/newfattura/newfattura.component';
 
 const routes: Routes = [
   {
@@ -20,7 +19,11 @@ const routes: Routes = [
   },
   {
     path:'cliente/modifica/:id',
-    component: ModficaClienteComponent
+    component: NewclienteComponent
+  },
+  {
+    path:'newclient',
+    component:NewclienteComponent
   },
   {
     path:'fatture',
@@ -31,12 +34,12 @@ const routes: Routes = [
     component: DettaglioFattureComponent
   },
   {
-    path:'fattura/modifica/:id',
-    component: ModficaFatturaComponent
+    path:'fattura/:modifica/:id',
+    component: NewfatturaComponent
   },
   {
-    path:'newclient',
-    component:NewclienteComponent
+    path:'newfattura/:id',
+    component:NewfatturaComponent
   }
 ];
 

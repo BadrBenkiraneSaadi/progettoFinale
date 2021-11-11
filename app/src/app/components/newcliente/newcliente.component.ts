@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IClienti } from 'src/app/interfaces/iclienti';
 import { IComuni } from 'src/app/interfaces/icomuni';
 import { IProvince } from 'src/app/interfaces/iprovince';
@@ -12,7 +13,7 @@ import { SProvinceService } from 'src/app/services/sprovince.service';
   styleUrls: ['./newcliente.component.css']
 })
 export class NewclienteComponent implements OnInit {
-  tipo:string[] = [];
+  tipo: string[] = [];
   nuovoCliente: IClienti = {
     ragioneSociale: '',
     partitaIva: '',
@@ -44,7 +45,7 @@ export class NewclienteComponent implements OnInit {
       localita: '',
       comune: {
         nome: '',
-        provincia: { 
+        provincia: {
           nome: '',
           sigla: ''
         }
@@ -53,15 +54,35 @@ export class NewclienteComponent implements OnInit {
     dataInserimento: '',
     dataUltimoContatto: ''
   }
-  constructor(private SProvince: SProvinceService, private SComuni: SComuniService, private SClienti: SClientiService) {
+
+  add: boolean = false;
+  put: boolean = false;
+
+  constructor(
+    private SProvince: SProvinceService,
+    private SComuni: SComuniService,
+    private SClienti: SClientiService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+
     let data = new Date();
-    this.nuovoCliente.dataInserimento = "2019-06-01T08:11:01.911+00:00"/* data.getFullYear() +"-"+ data.getMonth() +"-"+ data.getDay() +"T"+data.getHours()+":"+ data.getMinutes() +":"+ data.getMilliseconds()+"+00:00" */;
-    this.nuovoCliente.dataUltimoContatto= "2021-03-24T21:32:06.375+00:00"/* data.getFullYear() +"-"+ data.getMonth() +"-"+ data.getDay() +"T"+data.getHours()+":"+ data.getMinutes() +":"+ data.getMilliseconds()+"+00:00" */;
+    this.nuovoCliente.dataInserimento = data.getFullYear() + "-" + data.getMonth() + "-" + ('0' + data.getDate()).slice(-2) + "T" + ('0' + data.getHours()).slice(-2) + ":" + ('0' + data.getMinutes()).slice(-2) + ":" + data.getSeconds() + "." + data.getMilliseconds() + "+00:00";
+    this.nuovoCliente.dataUltimoContatto = data.getFullYear() + "-" + data.getMonth() + "-" + ('0' + data.getDate()).slice(-2) + "T" + ('0' + data.getHours()).slice(-2) + ":" + ('0' + data.getMinutes()).slice(-2) + ":" + data.getSeconds() + "." + data.getMilliseconds() + "+00:00";
     this.caricaTipo();
   }
 
   ngOnInit(): void {
-    
+    this.route.params.subscribe(params => {
+      if (params['id']) {
+        this.put = true;
+        this.SClienti.getClientiById(params['id']).subscribe(res => {
+          this.nuovoCliente = res;
+        });
+      } else {
+        this.add = true;
+      }
+    });
   }
 
   creaCliente(): void {
@@ -85,17 +106,17 @@ export class NewclienteComponent implements OnInit {
           nome: this.nuovoCliente.indirizzoSedeLegale.comune.provincia.nome,
           sigla: this.nuovoCliente.indirizzoSedeLegale.comune.provincia.sigla
         }).subscribe(res => {
-            console.log(res);
-          });
+          console.log(res);
+        });
       }
-      if(provinciaOperativa == false){
+      if (provinciaOperativa == false) {
         this.SProvince.postProvincia({
           nome: this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.nome,
           sigla: this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.sigla
         }).subscribe(res => {
-            console.log(res);
-            this.setComuni();
-          });
+          console.log(res);
+          this.setComuni();
+        });
       }
       else {
         this.setComuni();
@@ -123,31 +144,31 @@ export class NewclienteComponent implements OnInit {
         }
       });
 
-      this.nuovoCliente.indirizzoSedeLegale.comune.provincia.id=nuovoidlegale;
-      this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.id=nuovoidoperativa;
+      this.nuovoCliente.indirizzoSedeLegale.comune.provincia.id = nuovoidlegale;
+      this.nuovoCliente.indirizzoSedeOperativa.comune.provincia.id = nuovoidoperativa;
 
       this.SComuni.getAllComuni().subscribe(resp => {
         let comuni: IComuni[] = resp.content;
-        let idcomunilegale:number=0;
-        let idcomunioperativa:number=0;
+        let idcomunilegale: number = 0;
+        let idcomunioperativa: number = 0;
         let comuneLegale: boolean = false;
         let comuneOperativa: boolean = false;
 
         comuni.forEach(element => {
           if (element.nome == this.nuovoCliente.indirizzoSedeLegale.comune.nome) {
             comuneLegale = true;
-            if(element.id){
-              idcomunilegale=element.id
+            if (element.id) {
+              idcomunilegale = element.id
             }
           }
           if (element.nome == this.nuovoCliente.indirizzoSedeOperativa.comune.nome) {
             comuneOperativa = true;
-            if(element.id){
-              idcomunioperativa=element.id
+            if (element.id) {
+              idcomunioperativa = element.id
             }
           }
         });
-        
+
         if (comuneLegale == false) {
 
           this.SComuni.postComune({
@@ -157,10 +178,10 @@ export class NewclienteComponent implements OnInit {
             }
           }).subscribe(respo => {
             console.log(respo);
-            this.nuovoCliente.indirizzoSedeLegale.comune.id=respo.id;
-            });
-        } 
-        if(comuneOperativa == false){
+            this.nuovoCliente.indirizzoSedeLegale.comune.id = respo.id;
+          });
+        }
+        if (comuneOperativa == false) {
           this.SComuni.postComune({
             nome: this.nuovoCliente.indirizzoSedeOperativa.comune.nome,
             provincia: {
@@ -168,23 +189,37 @@ export class NewclienteComponent implements OnInit {
             }
           }).subscribe(respo => {
             console.log(respo);
-            this.nuovoCliente.indirizzoSedeOperativa.comune.id=respo.id;
-            this.SClienti.postCliente(this.nuovoCliente).subscribe(response => console.log(response)
-            );
+            this.nuovoCliente.indirizzoSedeOperativa.comune.id = respo.id;
+            this.SClienti.postCliente(this.nuovoCliente).subscribe(response => {
+              this.router.navigate(['/']);
+              console.log(response);
+            });
           });
         }
         else {
-          this.nuovoCliente.indirizzoSedeLegale.comune.id=idcomunilegale;
-          this.nuovoCliente.indirizzoSedeOperativa.comune.id=idcomunioperativa;
-          this.SClienti.postCliente(this.nuovoCliente).subscribe(response => console.log(response));
+          this.nuovoCliente.indirizzoSedeLegale.comune.id = idcomunilegale;
+          this.nuovoCliente.indirizzoSedeOperativa.comune.id = idcomunioperativa;
+          this.SClienti.postCliente(this.nuovoCliente).subscribe(response => {
+            this.router.navigate(['/']);
+            console.log(response);
+          });
         }
       });
     });
   }
 
   caricaTipo() {
-    this.SClienti.getTipoClienti().subscribe(res=>{
-      this.tipo=res;
+    this.SClienti.getTipoClienti().subscribe(res => {
+      this.tipo = res;
     });
+  }
+
+  modificaCliente() {
+    if (this.nuovoCliente.id) {
+      this.SClienti.putClienti(this.nuovoCliente.id.toString(), this.nuovoCliente).subscribe(res => {
+        console.log(res);
+        this.router.navigate(['/']);
+      })
+    }
   }
 }
