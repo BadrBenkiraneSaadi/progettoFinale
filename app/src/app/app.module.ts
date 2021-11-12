@@ -15,6 +15,7 @@ import { DettaglioClienteComponent } from './components/dettaglio-cliente/dettag
 import { DettaglioFattureComponent } from './components/dettaglio-fatture/dettaglio-fatture.component';
 import { NewfatturaComponent } from './components/newfattura/newfattura.component';
 import { RicercaComponent } from './components/ricerca/ricerca.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RicercaComponent } from './components/ricerca/ricerca.component';
     DettaglioClienteComponent,
     DettaglioFattureComponent,
     NewfatturaComponent,
-    RicercaComponent
+    RicercaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

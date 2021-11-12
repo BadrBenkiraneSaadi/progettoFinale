@@ -9,7 +9,7 @@ import { IProvince } from '../interfaces/iprovince';
 })
 export class SProvinceService {
 
-  private urlApiAll=environment.urlApi+'/api/province?sort=id,ASC';
+  private urlApiAll=environment.urlApi+'/api/province?size=1000&sort=id,ASC';
   private urlApi=environment.urlApi+'/api/province/';
   constructor(private http:HttpClient) { }
 

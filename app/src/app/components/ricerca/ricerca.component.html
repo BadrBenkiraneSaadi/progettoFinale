@@ -6,7 +6,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Ragione sociale..." [(ngModel)]="cliRagioneSociale">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2" (click)="clienteRagioneSociale()">Cerca</button>
+                    <button type="button" class="btn btn-primary input-group-btn" (click)="clienteRagioneSociale()">Cerca</button>
                 </div>
             </div>
             <h6>Ricerca per fatturato annuale</h6>
@@ -14,15 +14,15 @@
                 <input type="number" class="form-control" placeholder="Importo da..." [(ngModel)]="cliImportoDa">
                 <input type="number" class="form-control" placeholder="Importo a..." [(ngModel)]="cliImportoA">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2" (click)="clienteFatturato()">Cerca</button>
+                    <button type="button" class="btn btn-primary input-group-btn" (click)="clienteFatturato()">Cerca</button>
                 </div>
             </div>
             <h6>Ricerca per data inserimento</h6>
             <div class="input-group mb-3">
-                <input type="date" class="form-control" placeholder="Importo da..." [(ngModel)]="cliDataDa">
-                <input type="date" class="form-control" placeholder="Importo a..." [(ngModel)]="cliDataA">
+                <input type="date" class="form-control" [(ngModel)]="cliDataDa">
+                <input type="date" class="form-control" [(ngModel)]="cliDataA">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2" (click)="clienteData()">Cerca</button>
+                    <button type="button" class="btn btn-primary input-group-btn" (click)="clienteData()">Cerca</button>
                 </div>
             </div>
         </div>
@@ -30,25 +30,25 @@
             <h3>Fatture</h3><br>
             <h6>Ricerca per ragione sociale</h6>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Ragione sociale...">
+                <input type="text" class="form-control" placeholder="Ragione sociale..." [(ngModel)]="fattRagioneSociale">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2">Cerca</button>
+                    <button type="button" class="btn btn-primary input-group-btn" (click)="fatturaRagioneSociale()">Cerca</button>
                 </div>
             </div>
             <h6>Ricerca per importo</h6>
             <div class="input-group mb-3">
-                <input type="number" class="form-control" placeholder="Importo da...">
-                <input type="number" class="form-control" placeholder="Importo a...">
+                <input type="number" class="form-control" placeholder="Importo da..." [(ngModel)]="fattImportoDa">
+                <input type="number" class="form-control" placeholder="Importo a..." [(ngModel)]="fattImportoA">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2">Cerca</button>
+                    <button type="button" class="btn btn-primary input-group-btn" (click)="fatturaImporto()">Cerca</button>
                 </div>
             </div>
             <h6>Ricerca per data inserimento</h6>
             <div class="input-group mb-3">
-                <input type="number" class="form-control" placeholder="Importo da...">
-                <input type="number" class="form-control" placeholder="Importo a...">
+                <input type="date" class="form-control" [(ngModel)]="fattDataDa">
+                <input type="date" class="form-control" [(ngModel)]="fattDataA">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2">Cerca</button>
+                    <button type="button" class="btn btn-primary input-group-btn" (click)="fatturaData()">Cerca</button>
                 </div>
             </div>
         </div>

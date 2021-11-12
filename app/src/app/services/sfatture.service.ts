@@ -30,15 +30,15 @@ export class SFattureService {
   }
 
   getFatturaByAnno(anno:string){
-    return this.http.get<IFatture>(this.urlApi+'anno/?anno='+anno+'?&sort=id,ASC');
+    return this.http.get<IApi>(this.urlApi+'anno/?anno='+anno+'?&sort=id,ASC');
   }
 
   getFatturaByDataBetween(from:string,to:string){
-    return this.http.get<IFatture>(this.urlApi+'data/?from='+from+'&to='+to+'&sort=id,ASC');
+    return this.http.get<IApi>(this.urlApi+'data/?from='+from+'&to='+to+'&sort=id,ASC');
   }
 
   getFatturaByImportoBetween(from:string,to:string){
-    return this.http.get<IFatture>(this.urlApi+'importo/?from='+from+'&to='+to+'&sort=id,DESC');
+    return this.http.get<IApi>(this.urlApi+'importo/?from='+from+'&to='+to+'&sort=id,DESC');
   }
 
   postFattura(item:Object){

@@ -13,5 +13,11 @@ export class RouteGuardService implements CanActivate {
     return this.login;
   }
 
-  
+  setLogin(){
+    this.login=!this.login;
+  }
+
+  getLogin():boolean{
+    return this.login;
+  }
 }

@@ -8,7 +8,7 @@ import { IComuni } from '../interfaces/icomuni';
   providedIn: 'root'
 })
 export class SComuniService {
-  private urlApiAll=environment.urlApi+'/api/comuni?sort=id,ASC';
+  private urlApiAll=environment.urlApi+'/api/comuni?size=100000&sort=id,ASC';
   private urlApi=environment.urlApi+'/api/comuni/';
 
   constructor(private http:HttpClient) { }

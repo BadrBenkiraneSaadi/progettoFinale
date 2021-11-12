@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { RouteGuardService } from 'src/app/services/route-guard.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-myheader',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./myheader.component.css']
 })
 export class MyheaderComponent implements OnInit {
-
-  constructor() { }
+  constructor(private RouteGard:RouteGuardService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.RouteGard.setLogin();
   }
 
 }

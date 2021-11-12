@@ -12,5 +12,6 @@ export interface IUtente {
             roleName: string
         }
     ]
-
+    accessToken: string,
+    tokenType: string
 }
