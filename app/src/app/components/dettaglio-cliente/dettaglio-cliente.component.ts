@@ -11,53 +11,7 @@ import { SFattureService } from 'src/app/services/sfatture.service';
   styleUrls: ['./dettaglio-cliente.component.css']
 })
 export class DettaglioClienteComponent implements OnInit {
-  cliente: IClienti = {
-    ragioneSociale: '',
-    partitaIva: '',
-    tipoCliente: '',
-    email: '',
-    pec: '',
-    telefono: '',
-    nomeContatto: '',
-    cognomeContatto: '',
-    telefonoContatto: '',
-    emailContatto: '',
-    indirizzoSedeOperativa: {
-      id: undefined,
-      via: '',
-      civico: '',
-      cap: '',
-      localita: '',
-      comune: {
-        id: undefined,
-        nome: '',
-        provincia: {
-          id: undefined,
-          nome: '',
-          sigla: ''
-        }
-      }
-    },
-    indirizzoSedeLegale: {
-      id: undefined,
-      via: '',
-      civico: '',
-      cap: '',
-      localita: '',
-      comune: {
-        id: undefined,
-        nome: '',
-        provincia: {
-          id: undefined,
-          nome: '',
-          sigla: ''
-        }
-      }
-    },
-    dataInserimento: '',
-    dataUltimoContatto: '',
-    fatturatoAnnuale: 0
-  };
+  cliente!: IClienti;
 
   fatture: IFatture[] = [];
   fatturePagate: IFatture[] = [];

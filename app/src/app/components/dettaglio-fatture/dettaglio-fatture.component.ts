@@ -10,64 +10,7 @@ import { SFattureService } from 'src/app/services/sfatture.service';
 })
 export class DettaglioFattureComponent implements OnInit {
   stato:boolean = false;
-  fattura:IFatture={
-    data: '',
-    numero: 0,
-    anno: 0,
-    importo: 0,
-    stato: {
-      id: undefined,
-      nome: ''
-    },
-    cliente: {
-      id: undefined,
-      ragioneSociale: '',
-      partitaIva: '',
-      tipoCliente: '',
-      email: '',
-      pec: '',
-      telefono: '',
-      nomeContatto: '',
-      cognomeContatto: '',
-      telefonoContatto: '',
-      emailContatto: '',
-      indirizzoSedeOperativa: {
-        id: undefined,
-        via: '',
-        civico: '',
-        cap: '',
-        localita: '',
-        comune: {
-          id: undefined,
-          nome: '',
-          provincia: {
-            id: undefined,
-            nome: '',
-            sigla: ''
-          }
-        }
-      },
-      indirizzoSedeLegale: {
-        id: undefined,
-        via: '',
-        civico: '',
-        cap: '',
-        localita: '',
-        comune: {
-          id: undefined,
-          nome: '',
-          provincia: {
-            id: undefined,
-            nome: '',
-            sigla: ''
-          }
-        }
-      },
-      dataInserimento: '',
-      dataUltimoContatto: '',
-      fatturatoAnnuale: 0
-    }
-  };
+  fattura!:IFatture;
   id:string=''
 
   constructor(private SFatture:SFattureService, private route:ActivatedRoute, private router:Router) {
