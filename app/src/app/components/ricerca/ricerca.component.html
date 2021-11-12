@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row justify-content-center align-items-start">
+        <div class="col-6">
+            <h3>Clienti</h3><br>
+            <h6>Ricerca per ragione sociale</h6>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ragione sociale..." [(ngModel)]="cliRagioneSociale">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2" (click)="clienteRagioneSociale()">Cerca</button>
+                </div>
+            </div>
+            <h6>Ricerca per fatturato annuale</h6>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="Importo da..." [(ngModel)]="cliImportoDa">
+                <input type="number" class="form-control" placeholder="Importo a..." [(ngModel)]="cliImportoA">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2" (click)="clienteFatturato()">Cerca</button>
+                </div>
+            </div>
+            <h6>Ricerca per data inserimento</h6>
+            <div class="input-group mb-3">
+                <input type="date" class="form-control" placeholder="Importo da..." [(ngModel)]="cliDataDa">
+                <input type="date" class="form-control" placeholder="Importo a..." [(ngModel)]="cliDataA">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2" (click)="clienteData()">Cerca</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h3>Fatture</h3><br>
+            <h6>Ricerca per ragione sociale</h6>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ragione sociale...">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2">Cerca</button>
+                </div>
+            </div>
+            <h6>Ricerca per importo</h6>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="Importo da...">
+                <input type="number" class="form-control" placeholder="Importo a...">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2">Cerca</button>
+                </div>
+            </div>
+            <h6>Ricerca per data inserimento</h6>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="Importo da...">
+                <input type="number" class="form-control" placeholder="Importo a...">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary input-group-btn" id="basic-addon2">Cerca</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12" *ngIf="cli">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Ragione Sociale</th>
+                        <th scope="col">e-Mail</th>
+                        <th scope="col">PEC</th>
+                        <th scope="col">Telefeono</th>
+                        <th scope="col">Utilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of clienti">
+                        <th scope="row">{{item.ragioneSociale}}</th>
+                        <td>{{item.email}}</td>
+                        <td>{{item.pec}}</td>
+                        <td>{{item.telefono}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio" [routerLink]="[ '/cliente/dettaglio/'+ item.id ]"><i class="bi bi-eye"></i></button><br>
+                            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica" [routerLink]="[ '/cliente/modifica/'+ item.id ]"><i class="bi bi-vector-pen"></i></button><br>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12" *ngIf="fa">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Importo</th>
+                        <th scope="col">Anno</th>
+                        <th scope="col">Stato</th>
+                        <th scope="col">Utilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of fatture ">
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.cliente.ragioneSociale}}</td>
+                        <td>{{item.importo | currency:'€ '}}</td>
+                        <td>{{item.anno}}</td>
+                        <td><b>{{item.stato.nome}}</b></td>
+                        <td>
+                            
+                            <button type="button" class="btn btn-primary btn-sm my-1" placement="right" ngbTooltip="Dettaglio" [routerLink]="[ '/fattura/dettaglio/' + item.id ]"><i class="bi bi-eye"></i></button><br>
+                            <button type="button" class="btn btn-warning btn-sm my-1" placement="right" ngbTooltip="Modifica" [routerLink]="[ '/fattura/modifica/' + item.id ]"><i class="bi bi-vector-pen"></i></button><br>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

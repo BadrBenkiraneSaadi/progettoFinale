@@ -26,19 +26,19 @@ export class SClientiService {
   }
 
   getClientiByDataInserimento(from:string,to:string) {
-    return this.http.get<IClienti>(this.urlApi+'datainserimento?from='+from+'&to='+to);
+    return this.http.get<IApi>(this.urlApi+'datainserimento?from='+from+'&to='+to);
   }
 
   getClientiByDataUltimoContatto(from:string,to:string) {
-    return this.http.get<IClienti>(this.urlApi+'dataultimocontatto?from='+from+'&to='+to);
+    return this.http.get<IApi>(this.urlApi+'dataultimocontatto?from='+from+'&to='+to);
   }
   
   getClientiByRagioneSociale(ragioneSociale:string) {
-    return this.http.get<IClienti>(this.urlApi+'ragionesociale?nome='+ragioneSociale);
+    return this.http.get<IApi>(this.urlApi+'ragionesociale?nome='+ragioneSociale);
   }
 
   getClientiByFatturatoAnnuale(from:string,to:string) {
-    return this.http.get<IClienti>(this.urlApi+'fatturatoannuale?from='+from+'&to='+to);
+    return this.http.get<IApi>(this.urlApi+'fatturatoannuale?from='+from+'&to='+to);
   }
 
   postCliente(item:IClienti){

@@ -6,6 +6,7 @@ import { DettaglioFattureComponent } from './components/dettaglio-fatture/dettag
 import { FattureComponent } from './components/fatture/fatture.component';
 import { NewclienteComponent } from './components/newcliente/newcliente.component';
 import { NewfatturaComponent } from './components/newfattura/newfattura.component';
+import { RicercaComponent } from './components/ricerca/ricerca.component';
 
 const routes: Routes = [
   /* {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path:'newfattura/:id',
     component:NewfatturaComponent
+  },
+  {
+    path:'ricerca',
+    component:RicercaComponent
   }
 ];
 
