@@ -13,7 +13,6 @@ export class AppComponent implements AfterViewChecked {
 
   ngAfterViewChecked() {
     this.log=this.RouteGard.getLogin();
-    console.log(this.log);
   }
   
 }
